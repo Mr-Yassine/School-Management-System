@@ -1,90 +1,96 @@
 <?php
 
+include_once __DIR__ . '/../model/reservations.php';
 
-require __DIR__.'/../model/matieres.php';
-
-
-class MatiereCont
+class ReservationCont
 {
 
-	function matiere(){
 
+	function index(){
+		
 		session_start();
 		if(!isset($_SESSION["username"])){
 			header("location:http://localhost/School-Management-System/");
 		}
 
-		$obj= new matieres();
-		$result = $obj-> select();
-		
-		$ens= $obj-> getEns();
-
-		require_once __DIR__.'/../view/matieres/matiere.php';
+		$obj = new Reservations();
+		require __DIR__ . "/../view/reservation.php";
 	}
 
 
-	function Ajout(){
-
+	function reservation()
+	{
 		session_start();
 		if(!isset($_SESSION["username"])){
 			header("location:http://localhost/School-Management-System/");
 		}
-		
-		if (isset ($_POST ['submit'])){
 
-			$libelle=$_POST ['libelle'];
-			$enseignee=$_POST ['enseignee'];
+		$obj = new Reservations();
+		$salles = $obj->selectsalle();
+		$cours = $obj->getCours();
+		require_once __DIR__ . '/../view/salles/salleRes.php';
+	}
 
-			$obj= new matieres();
-			$result = $obj -> Ajout($libelle, $enseignee);
+	function Ajout()
+	{
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/School-Management-System/");
+		}
+
+		if (isset($_POST['submit'])) {
+
+			if((isset($_POST['date']) && isset($_POST['capacite']) && isset($_POST['heure']) && isset($_POST['salle']))   ){
+
+				$date = $_POST['date'];
+				$capacite = $_POST['capacite'];
+				$heure = $_POST['heure'];
+				$salle = $_POST['salle'];
+
+
+				$obj = new Reservations();
+				$result=null;
+
+				if(!(empty($date) || empty($capacite) || empty($heure) || empty($salle)) || !($date <  date("d-m-y")) ) {
+
+					$result = $obj->Ajout($date, $capacite, $heure, $salle);
+
+				}
+				
 			
-			header ("location:http://localhost/School-Management-System/matiereCont/matiere");
+			
+				if ($result) {
+					$message = "Reservation effectué";
+				} else {
+					$message = "Salle déja reservé";
+					
+				}
+				echo "<script>alert('$message')</script>";
+				header("location:http://localhost/School-Management-System/ReservationCont/reservation");
+			}
+				
+			else{
+				echo "<script>alert('Entrez vos données')</script>";
+				header("location:http://localhost/School-Management-System/ReservationCont/reservation");
+			}
 		}
+		
 	}
 
-	function delete(){
-
+	function delete()
+	{
 		session_start();
 		if(!isset($_SESSION["username"])){
 			header("location:http://localhost/School-Management-System/");
 		}
 
-		if (isset ($_POST ['submit'])){
-			
-			$IdMat=$_POST ['IdMat'];
+		if (isset($_POST['delete'])) {
 
-			$obj= new matieres();
-			$result = $obj -> delete ($IdMat);
-			header ("location:http://localhost/School-Management-System/matiereCont/matiere");
+			$IdCours = $_POST['IdCours'];
+
+			$obj = new Reservations();
+			$result = $obj->delete($IdCours);
+			header("location:http://localhost/School-Management-System/ReservationCont/reservation");
 		}
 	}
-
-	function update(){
-
-		session_start();
-		if(!isset($_SESSION["username"])){
-			header("location:http://localhost/School-Management-System/");
-		}
-
-	
-		if (isset($_POST ['update'])){
-		
-			// print_r($_POST);
-
-			$IdMat=$_POST ['IdMat'];
-			$libelle=$_POST ['libelle'];
-			$enseignee=$_POST ['enseignee'];
-			
-
-			$obj= new matieres();
-			$result = $obj -> update ($IdMat,$libelle, $enseignee);
-			header ("location:http://localhost/School-Management-System/matiereCont/matiere");
-		}
-		
-	}
-
-	
-	
-
-	
 }
