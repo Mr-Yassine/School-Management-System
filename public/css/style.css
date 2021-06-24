@@ -1,0 +1,185 @@
+/*=============================================================*/
+/*========================== Log In ===========================*/
+/*=============================================================*/
+
+.lg {
+    background: #2962FF;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+
+.card {
+    border-radius: 13px;
+    border: none
+}
+
+.card-heading {
+    font-weight: bold;
+    margin-bottom: 10vh;
+}
+
+
+.form-control {
+    border: none;
+    border-radius: 10px;
+    background: rgba(165, 147, 69, 0.075)
+}
+
+.btn {
+    border: 1px solid #2979FF;
+    border-radius: 10px;
+    width: 120px;
+    margin-right: 5vw;
+    
+}
+
+.rtwo{
+    justify-content: space-between;
+}
+
+.forgot {
+    font: #00ACC1;
+    font-weight: bold;
+    color: #26C6DA;
+    font-size: 15px;
+    padding-left: 35px
+}
+
+.form-control {
+    background-color: #eee !important
+}
+
+.form-control:focus {
+    color: #495057;
+    border-color: #fff !important;
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, .25) !important
+}
+
+a {
+    text-decoration: none !important
+}
+
+.col-md-4{
+    margin-left: 10vw;
+}
+
+.form-group{
+    margin-bottom: 4vh;
+}
+
+
+/*=============================================================*/
+/*=========================== Home ============================*/
+/*=============================================================*/
+#lg_home{
+    margin-top: 2vh;
+}
+
+#ges_img{
+    width: 60vw;
+    margin-left: -2vw;
+}
+
+/*=============================================================*/
+/*========================== Salles ===========================*/
+/*=============================================================*/
+.list-group{
+    margin-top: 10vh;
+    margin-left: 2vw;
+}
+
+#myList1{
+    margin-left: 2vw;
+    margin-top: 10vh;
+    border-radius: 6px;
+}
+
+
+#add_btn{
+    margin-left: 2vw;
+}
+
+
+/*=============================================================*/
+/*======================== Registration =======================*/
+/*=============================================================*/
+
+.bd {
+    background-color: #00d0f5
+}
+
+.container {
+    height: 100vh
+}
+
+.card {
+    width: 100%;
+    padding: 30px
+}
+
+.form {
+    padding: 20px
+}
+
+.form-control {
+    height: 50px;
+    background-color: #eee;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #f50057;
+    outline: 0;
+    box-shadow: none;
+    background-color: #eee;
+}
+
+.inputbox {
+    margin-bottom: 15px;
+}
+
+.register {
+    width: 200px;
+    height: 51px;
+    background-color: #00d0f5;
+    border-color: #00d0f5;
+}
+
+.register:hover {
+    width: 200px;
+    height: 51px;
+    background-color: #08a4c0;
+    border-color: #08a4c0;
+}
+
+.login {
+    color: #f50057;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login:hover {
+    color: #f50057;
+    text-decoration: none;
+}
+
+.form-check-input:checked {
+    background-color: #f50057;
+    border-color: #f50057;
+}
+
+
+
+/*=============================================================*/
+/*======================== Reservation ========================*/
+/*=============================================================*/
+
+#ens_img{
+    height: 70vh;
+}
+
+.sRes_tit{
+    font-weight: bold;
+}
